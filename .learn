@@ -12,4 +12,4 @@ topic:
 unit:
   - [Add unit name]
 lesson:
-  - Callbacks, Callback Hell, and the Async Library
+  - Using the Async Library to Manage Callback Hell
