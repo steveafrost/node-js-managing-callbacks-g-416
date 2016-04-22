@@ -12,12 +12,13 @@ So that is what we will focus on in this lesson: what are these problems with ca
 1. Explain Callback Hell.
 2. Avoid Callback Hell by using the Async library.
 
+## Callback Hell
 
-However, there are a few things that we need to keep in mind when using the callback pattern. Because callbacks do have a weakness, frequently referred to as...CALLBACK HELL! Well that sounds ominous. Let's find out what it is, shall we?
+So what is this infamous Callback Hell? In fact, callback hell can be a difficult thing to describe despite the fact that when you encounter it you definitely know that it's, well, hellish. Nonetheless, let's get to the bottom of this phenomenon.
 
-Callback hell is something that we tend to encounter when we are dealing with more complex program execution flows, involving multiple, interrelated, processes.  Let's return to our orginal peanbut butter sandwhich example to see how we can end up in callback hell. 
+Generally speaking, callback hell is something that we tend to encounter when dealing with more complex execution flows that involve multiple, interrelated, asynchronous processes. In order to see what this might look like in practice, let's return to our original peanut butter sandwhich program from the first lesson.
 
-In that example, in step #2 our program gathered ingredients through two asynchronous processes: grocery shopping to get jam and peanut butter and jam, and bread baking. Really, though, these two proceses were interrelated because how can we bake bread if we don't have the ingredients needed to make bread? Let's rethink this taking that into account. Now that we know about callbacks, we can express it with some pseudocode:
+In that program, in step #2 our program gathered ingredients through two asynchronous processes: grocery shopping and bread baking. Really, though, these two proceses were interrelated because how can we bake bread if we don't have the ingredients needed to make bread? Let's rethink our program taking that into account. Now that we know about callbacks, we can express that interelatedness with some pseudocode:
 
 ```
 function makePBAndJ() {
