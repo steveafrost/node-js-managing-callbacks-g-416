@@ -1,6 +1,17 @@
-## Callback Hell
+Using the Async Library to Manage "Callback Hell"
+=================================================
 
-Now that we can explain and use callbacks, we are in posession of the most basic, most powerful, and frankly most ubiquitous method for managing asynchrony in JS applications. Congratuations!
+## Overview
+
+In the past few lessons we learned about and then got a chance to write callbacks. As such, you are now in posession of the most basic, most powerful, and most ubiquitous method for managing asynchrony in JS applications. Congratuations!
+
+However, there are a few things that we need to keep in mind when using the callback pattern. Because callbacks do have weaknesses. These weaknesses often manifest in what is referred to rather ominously as...wait for it...CALLBACK HELL!
+
+So that is what we will focus on in this lesson: what are these problems with callbacks that lead to callback hell, and how can we deal with them. By the end of the lesson, you will be able to: 
+
+1. Explain Callback Hell.
+2. Avoid Callback Hell by using the Async library.
+
 
 However, there are a few things that we need to keep in mind when using the callback pattern. Because callbacks do have a weakness, frequently referred to as...CALLBACK HELL! Well that sounds ominous. Let's find out what it is, shall we?
 
