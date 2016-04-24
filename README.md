@@ -55,7 +55,7 @@ Now that you have a sense of the weaknesses of callbacks, let's talk about commo
 
 The truth is that there are a variety of methods for avoiding callback hell that you are likely to encounter, and the various methods for managing asynchrony are a key domain in which Javascript and Node are developing changing. In this lesson, we will cover two of the mostly commonly used methods, which have been in use for some time now, and which therefore you will encounter frequently. Then, in the next lesson, we'll examine one of the newer patterns called Promises, which are now becoming standard to Node and Javascript.
 
-One of the most common ways that programmers avoid callback hell involves a simple stylistic tweak of using "named" functions instead of "anonymous" functions when defining the callback. An anonymous function, as you may recall is just one without a name, e.g. `function() { // does something }`;a named function is one that has been named, e.g. `var myFunc = function() { // does something }`. 
+One of the most common ways that programmers avoid callback hell involves a simple stylistic tweak of using "named" functions instead of "anonymous" functions when defining the callback. An anonymous function, as you may recall is just one without a name, e.g. `function() { // does something }`; a named function is one that has been named, e.g. `var myFunc = function() { // does something }`. 
 
 So how does this help us avoid callback hell? Well, declaring named functions allows us to extract the logic out of the nested pyramid of callbacks. An example will make the difference clear. Taking our previous example of the PB&J program, we can rewrite the above code like so:
 
