@@ -49,4 +49,35 @@ Slightly dizzy? No wonder. This is a rather long chain of async callbacks. The p
 
 It's important to keep in mind, moreover, that what we are dealing with in our example is only a pseudocode snippet. In an actual JS application, instances of callback hell like this are less likely to be so simple. The callbacks may well be filled with long logical structures of their own, making it harder still to follow the steps of async logic. What's more code that is so hard to follow can also, especially on teams, create ripe conditions for the introduction of bugs, and it's bugs that ultimately make applications expensive and difficult to maintain.
 
+## Managing Callback Hell
+
+Now that you have a sense of the weaknesses of callbacks, let's talk about common practices for managing or avoiding callback hell. The truth is that there are a variety of methods for avoiding callback hell that you are likely to encounter, and the various methods for managing asynchrony are a key domain in which Javascript and Node are developing changing. In this lesson, we will cover two of the mostly commonly used methods, which have been in use for some time now, and which therefore you will encounter frequently. Then, in the next lesson, we'll examine one of the newer patterns called Promises, which are now becoming standard to Node and Javascript.
+
+One of the most common ways that programmers avoid callback hell involves a simple stylistic tweak of using "named" functions instead of "anonymous" functions when defining the callback. An anonymous function, as you may recall is just one without a name, e.g. `function() { // does something }`;a named function is one that has been named, e.g. `var myFunc = function() { // does something }`. 
+
+So how does this help us avoid callback hell? Well, declaring named functions allows us to extract the logic out of the nested pyramid of callbacks. An example will make the difference clear. Taking our previous example of the PB&J program, we can rewrite the above code like so:
+
+```
+var bakeBreadCallback = function() {
+  var coolingTime = 1000 * 60 * 60 * 2;
+  setTimeout(function() {
+    prepareTheSandwich(ingredients, function() {
+      console.log("Boom! Peanut Butter and Jelly Sandwich.")
+    });
+  }, coolingTime);
+};
+
+var doShoppingCallback = function(ingredients) {
+  bakeBread(ingredients, bakeBreadCallback)
+};
+
+function makePBAndJ() {
+  prepareWorkSpace();
+  var shoppingList = {'jam', 'peanut butter', 'flour', 'yeast', 'salt'};
+  doShoping(shoppingList, doShoppingCallback);
+}
+```
+
+What we've done here is define a series of named callback functions -- `bakeBreadCallback` and `doShoppingCallback` -- and supplied those named functions to the corresponding function in our PB&J program API. You might ask if this is really an improvement, and if so, you'd be right? This code is not really all that better. It is still rather laborious to read. In order to read what's going on here we'd need to see that the top level function is `makePBAndJ()`. Then we'd start to see that the `doShoppingCallback` function calls `bakeBread`, which in turn calls the `bakeBreadCallback`. It's still pretty confusing! However, the one advantage gained here is that we aren't any longer dealing with the complex nesting of anonymous functions. So our brains don't have to interpet all that indentation. Plus the different sets of program logic within each callback are now nicely separated into their own blocks of code, complete with named functions that will help someone who looks at the code later know what that particular callback does. So while certainly not a huge improvement, this stylistic shift does have some advantages and can be particularly useful if our callback contains a lot of code. It's something we are likely to see when working on legacy code, and it's not a bad thing to have in our toolbelt.
+
 
