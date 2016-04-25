@@ -196,4 +196,4 @@ async.waterfall([
 
 And there we have it. Using similar steps as in our previous example, we use the request module to get the data from OpenWeatherMap's API. Once it return, presuming there's been no error, we pass that data along to the final callback, where it's is output. We should see something like this:
 
-![](http://ezmiller.s3.amazonaws.com/public/flatiron-imgs/async-example-gif.gif)
+![](http://ezmiller.s3.amazonaws.com/public/flatiron-imgs/async-example-run.gif)
