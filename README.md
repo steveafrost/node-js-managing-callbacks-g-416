@@ -7,7 +7,7 @@ In the past few lessons we learned about and then got a chance to write callback
 
 However, there are a few things that we need to keep in mind when using the callback pattern. Because callbacks do have weaknesses. These weaknesses often manifest in what is referred to rather ominously as...wait for it...CALLBACK HELL!
 
-So that is what we will focus on in this lesson: what are these problems with callbacks that lead to callback hell, and how can we deal with them. By the end of the lesson, you will be able to: 
+So that is what we will focus on in this lesson: what are these problems with callbacks that lead to callback hell, and how can we deal with them. By the end of the lesson, you will be able to:
 
 1. Explain Callback Hell.
 2. Avoid Callback Hell by using the Async library.
@@ -39,13 +39,13 @@ function makePBAndJ() {
 
 Here then we have what is called CALLBACK HELL. Are you scared?
 
-![](http://ezmiller.s3.amazonaws.com/public/flatiron-imgs/hell.gif)
+![](https://curriculum-content.s3.amazonaws.com/node-js/hell.gif)
 
 Well, regardless of your reaction let's look at what's going on here and why you might oughta be scared by this pseudocode snippet. First, let's make sure we're on the same page about the what's going on in the snippet. What we have here is a function `makePBAndJ()` that begins by calling a function to set up our PB&J workspace and creating a shopping list.
 
 Then comes the interesting part: a nested sequence of function calls, essentially a series of callbacks within callbacks. First, we call the `doShopping` method, passing it the shopping list and a callback function that wraps the next steps. When that callback executes, it then calls another asynchronous method `bakeBread` that takes our next callback, which will be called when the bread has baked. This callback then calculates a `coolDownTime` of two hours in miliseconds and calls the JS built-in asynchronous method `setTimeout` that takes our final callback and the calculated cool down time. Finally, when our next callback is called after the cool down, the `prepareTheSandwich` method is called, taking one last callback that when the sandwich is done, outputs "Boom! Peanut Butter and Jelly Sandwich" to the console.
 
-Slightly dizzy? No wonder. This is a rather long chain of async callbacks. The problem here, however, isn't necessarily that the process itself is complex. That may well be unavoidable, as many process are complex, and translating processes so that a computer can understand them often involves adding more complexity. The problem is that the callback pattern, which takes logic that we think of as a series of steps and instead nests that logic in this pyramid-like manner, adds to rather that reduces the complexity of our code. 
+Slightly dizzy? No wonder. This is a rather long chain of async callbacks. The problem here, however, isn't necessarily that the process itself is complex. That may well be unavoidable, as many process are complex, and translating processes so that a computer can understand them often involves adding more complexity. The problem is that the callback pattern, which takes logic that we think of as a series of steps and instead nests that logic in this pyramid-like manner, adds to rather that reduces the complexity of our code.
 
 It's important to keep in mind, moreover, that what we are dealing with in our example is only a pseudocode snippet. In an actual JS application, instances of callback hell like this are less likely to be so simple. The callbacks may well be filled with long logical structures of their own, making it harder still to follow the steps of async logic. What's more code that is so hard to follow can also, especially on teams, create ripe conditions for the introduction of bugs, and it's bugs that ultimately make applications expensive and difficult to maintain.
 
@@ -55,7 +55,7 @@ Now that you have a sense of the weaknesses of callbacks, let's talk about commo
 
 The truth is that there are a variety of methods for avoiding callback hell that you are likely to encounter, and the various methods for managing asynchrony are a key domain in which Javascript and Node are developing changing. In this lesson, we will cover two of the mostly commonly used methods, which have been in use for some time now, and which therefore you will encounter frequently. Then, in the next lesson, we'll examine one of the newer patterns called Promises, which are now becoming standard to Node and Javascript.
 
-One of the most common ways that programmers avoid callback hell involves a simple stylistic tweak of using "named" functions instead of "anonymous" functions when defining the callback. An anonymous function, as you may recall is just one without a name, e.g. `function() { // does something }`; a named function is one that has been named, e.g. `var myFunc = function() { // does something }`. 
+One of the most common ways that programmers avoid callback hell involves a simple stylistic tweak of using "named" functions instead of "anonymous" functions when defining the callback. An anonymous function, as you may recall is just one without a name, e.g. `function() { // does something }`; a named function is one that has been named, e.g. `var myFunc = function() { // does something }`.
 
 So how does this help us avoid callback hell? Well, declaring named functions allows us to extract the logic out of the nested pyramid of callbacks. An example will make the difference clear. Taking our previous example of the PB&J program, we can rewrite the above code like so:
 
@@ -90,7 +90,7 @@ So while certainly not a huge improvement, this stylistic shift does have some a
 
 ## Managing Callback Hell with the Async Library
 
-You may have noticed in the strategy illustrated above that the goal was to flatten-out the pyramid-like nesting of callbacks so that the code is more readable. While we achieved that to some extent by extracting the code and placing it in named functions, the code is still hard to read because our eyes have to jump around quite a bit to reconstruct the order in which the program executes. 
+You may have noticed in the strategy illustrated above that the goal was to flatten-out the pyramid-like nesting of callbacks so that the code is more readable. While we achieved that to some extent by extracting the code and placing it in named functions, the code is still hard to read because our eyes have to jump around quite a bit to reconstruct the order in which the program executes.
 
 Luckily, we have some better solutions that not only solve the problem of nesting, but restore a sense of the order in which code executes. One of the most important of these is the [Async library](https://github.com/caolan/async). This library, which can be included in any Node project as as a module, provides a series of functions that allow us to wrangle asynchronous code into a synchronous form so that it is easier to read and reason about.
 
@@ -196,7 +196,7 @@ async.waterfall([
 
 And there we have it. Using similar steps as in our previous example, we use the request module to get the data from OpenWeatherMap's API. Once it return, presuming there's been no error, we pass that data along to the final callback, where it's is output. We should see something like this:
 
-![](http://ezmiller.s3.amazonaws.com/public/flatiron-imgs/async-example-run.gif)
+![](https://curriculum-content.s3.amazonaws.com/node-js/async-example-run.gif)
 
 ## Resources
 
