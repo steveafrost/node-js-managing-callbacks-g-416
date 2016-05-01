@@ -202,5 +202,5 @@ And there we have it. Using similar steps as in our previous example, we use the
 
 * The Async Library: https://github.com/caolan/async
 * The OpenWeatherMap API: http://openweathermap.org/current
-* Kyle Simpson, "Chapter 2: Callbacks" in **You Don't Know JS: Async & Performance**.
+* Kyle Simpson, "Chapter 2: Callbacks" in *You Don't Know JS: Async & Performance*.
 * Another Good discussion of callback hell at [callbackhell.com](http://callbackhell.com/)
